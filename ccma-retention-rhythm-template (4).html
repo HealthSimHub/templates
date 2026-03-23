@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCMA Retention Rhythm Template — HealthSim Hub</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+  :root {
+    --navy:    #0F2240;
+    --navy2:   #162d52;
+    --teal:    #0D7377;
+    --teal2:   #0fb8a8;
+    --teallt:  #E0F4F4;
+    --gold:    #E8A020;
+    --goldlt:  #FEF3DC;
+    --green:   #065F46;
+    --greenlt: #ECFDF5;
+    --purple:  #6D28D9;
+    --purplt:  #F5F3FF;
+    --rose:    #C0392B;
+    --roselt:  #FDECEA;
+    --slate:   #475569;
+    --border:  #E2E8F0;
+    --bg:      #F8FAFB;
+    --white:   #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--navy);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+
+  /* ── PRINT BAR ── */
+  .print-bar {
+    background: var(--navy);
+    padding: 10px 32px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  .print-btn {
+    background: var(--teal);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .print-btn:hover { background: var(--teal2); }
+
+  /* ── PAGE ── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 32px 60px;
+  }
+
+  /* ── COVER BAND ── */
+  .cover-band {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-band::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(13,115,119,.18);
+  }
+  .cover-band::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: 60px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(232,160,32,.10);
+  }
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .brand-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 13px;
+    color: var(--teal2);
+  }
+  .brand-div { width: 1px; height: 14px; background: rgba(255,255,255,.2); }
+  .brand-tag {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+  }
+  .cover-eyebrow {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--teal2); margin-bottom: 8px; position: relative;
+  }
+  .cover-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px; color: white;
+    line-height: 1.15; margin-bottom: 10px; position: relative;
+  }
+  .cover-title em { color: var(--gold); font-style: italic; }
+  .cover-sub {
+    font-size: 13.5px; color: rgba(255,255,255,.65);
+    max-width: 520px; line-height: 1.65; position: relative;
+    margin-bottom: 20px;
+  }
+  .cover-chips {
+    display: flex; gap: 8px; flex-wrap: wrap; position: relative;
+  }
+  .cover-chip {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 20px; padding: 4px 12px;
+    font-size: 11px; color: rgba(255,255,255,.75); font-weight: 500;
+  }
+
+  /* ── INTRO ── */
+  .intro-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--teal);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    font-size: 13.5px;
+    color: var(--slate);
+    line-height: 1.75;
+  }
+  .intro-box strong { color: var(--navy); }
+
+  /* ── HOW TO USE ── */
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 600px) { .how-grid { grid-template-columns: 1fr; } }
+
+  .how-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .how-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: white;
+    font-size: 13px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+  }
+  .how-title {
+    font-size: 13px; font-weight: 700;
+    color: var(--navy); margin-bottom: 6px;
+  }
+  .how-desc {
+    font-size: 12.5px; color: var(--slate); line-height: 1.65;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--slate); margin-bottom: 14px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
+
+  /* ── RHYTHM LEGEND ── */
+  .legend-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .legend-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: var(--slate);
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* ── TEMPLATE TABLE ── */
+  .template-wrap {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 8px rgba(15,34,64,.06);
+  }
+  .template-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .template-table th {
+    background: var(--navy);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .template-table th:first-child { width: 60px; text-align: center; }
+  .template-table th:nth-child(2) { width: 140px; }
+
+  .template-table td {
+    padding: 11px 14px;
+    font-size: 12.5px;
+    color: var(--slate);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .template-table td:first-child { text-align: center; }
+  .template-table tr:last-child td { border-bottom: none; }
+  .template-table tr:nth-child(even) td { background: var(--bg); }
+
+  /* Phase group rows */
+  .phase-row td {
+    background: var(--navy) !important;
+    color: rgba(255,255,255,.9) !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: .5px !important;
+    text-transform: uppercase !important;
+    padding: 7px 14px !important;
+  }
+
+  .week-tag {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 10px;
+    font-family: 'DM Mono', monospace;
+  }
+  .week-tag.ph1 { background: #1d4ed8; }
+  .week-tag.ph2 { background: var(--teal); }
+  .week-tag.ph3 { background: #6D28D9; }
+  .week-tag.exam { background: var(--gold); color: var(--navy); }
+
+  .fill-line {
+    display: block;
+    border-bottom: 1px solid #CBD5E1;
+    margin: 6px 0;
+    min-width: 80px;
+    height: 16px;
+  }
+  .fill-hint {
+    font-size: 10.5px;
+    color: #CBD5E1;
+    font-style: italic;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .milestone-badge {
+    display: inline-block;
+    background: var(--greenlt);
+    border: 1px solid #6ee7b7;
+    color: var(--green);
+    font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 6px;
+    white-space: nowrap;
+  }
+  .exam-badge {
+    display: inline-block;
+    background: var(--goldlt);
+    border: 1px solid #fcd34d;
+    color: #92400e;
+    font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  /* ── REMINDER CARDS ── */
+  .reminder-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 600px) { .reminder-grid { grid-template-columns: 1fr; } }
+
+  .reminder-card {
+    border-radius: 10px;
+    padding: 14px 18px;
+  }
+  .rc-daily { background: var(--teallt); border-left: 3px solid var(--teal); }
+  .rc-weekly { background: var(--goldlt); border-left: 3px solid var(--gold); }
+  .rc-unit { background: var(--purplt); border-left: 3px solid var(--purple); }
+  .rc-phase { background: var(--greenlt); border-left: 3px solid var(--green); }
+
+  .reminder-label {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .rc-daily .reminder-label { color: var(--teal); }
+  .rc-weekly .reminder-label { color: #B45309; }
+  .rc-unit .reminder-label { color: var(--purple); }
+  .rc-phase .reminder-label { color: var(--green); }
+
+  .reminder-text {
+    font-size: 12.5px; color: var(--navy); line-height: 1.65;
+  }
+  .reminder-text strong { color: var(--navy); }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: linear-gradient(135deg, var(--navy), #1a3a6b);
+    border-radius: 14px;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .cta-left h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px; color: white; margin-bottom: 6px;
+  }
+  .cta-left p {
+    font-size: 12.5px; color: rgba(255,255,255,.65); line-height: 1.6; max-width: 420px;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--gold); color: var(--navy);
+    font-size: 12.5px; font-weight: 700;
+    padding: 10px 20px; border-radius: 20px;
+    text-decoration: none; white-space: nowrap; flex-shrink: 0;
+    transition: background .15s;
+  }
+  .cta-btn:hover { background: #f0be5a; }
+  .cta-btn-outline {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    color: rgba(255,255,255,.85);
+    font-size: 12px; font-weight: 600;
+    padding: 8px 16px; border-radius: 20px;
+    text-decoration: none; white-space: nowrap; flex-shrink: 0;
+    transition: background .15s;
+  }
+  .cta-btn-outline:hover { background: rgba(255,255,255,.18); }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    font-size: 11px; color: #94a3b8;
+    margin-top: 20px;
+    line-height: 1.7;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    /* ── HIDE SCREEN-ONLY ELEMENTS ── */
+    .print-bar { display: none !important; }
+    .cta-band  { display: none !important; }
+
+    /* ── PAGE SETUP ── */
+    @page { margin: 14mm 12mm; size: letter; }
+    html, body { background: white !important; font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+
+    /* ── COVER — fits on page 1, no break after ── */
+    .cover-band {
+      border-radius: 10px !important;
+      padding: 20px 24px !important;
+      margin-bottom: 12px !important;
+      page-break-after: avoid;
+      break-after: avoid;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .cover-band::before, .cover-band::after { display: none; }
+    .cover-title { font-size: 22px !important; }
+    .cover-sub   { font-size: 11px !important; margin-bottom: 10px !important; }
+
+    /* ── REPLACE EMOJI CHIPS WITH PLAIN TEXT BADGES ── */
+    .cover-chips { gap: 5px !important; margin-top: 10px !important; }
+    .cover-chip {
+      font-size: 9px !important;
+      padding: 2px 8px !important;
+      border-radius: 10px !important;
+    }
+    .cover-chip::before { content: none; }
+
+    /* ── INTRO + HOW GRID — keep with cover on page 1 ── */
+    .intro-box {
+      padding: 10px 14px !important;
+      margin-bottom: 10px !important;
+      font-size: 10.5px !important;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .section-label { font-size: 8px !important; margin-bottom: 8px !important; }
+    .how-grid {
+      gap: 8px !important;
+      margin-bottom: 10px !important;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .how-card { padding: 10px 12px !important; border-radius: 8px !important; }
+    .how-num  { width: 22px !important; height: 22px !important; font-size: 10px !important; margin-bottom: 6px !important; }
+    .how-title { font-size: 10px !important; }
+    .how-desc  { font-size: 9.5px !important; }
+
+    /* ── LEGEND ── */
+    .legend-row { margin-bottom: 10px !important; gap: 6px !important; }
+    .legend-pill { font-size: 9px !important; padding: 3px 8px !important; }
+
+    /* ── TABLE — clean breaks between phases ── */
+    .template-wrap {
+      border-radius: 8px !important;
+      margin-bottom: 12px !important;
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+    .template-table th { font-size: 9px !important; padding: 7px 10px !important; }
+    .template-table td { font-size: 10px !important; padding: 7px 10px !important; line-height: 1.4 !important; }
+    .phase-row td      { font-size: 8.5px !important; padding: 5px 10px !important; page-break-after: avoid; break-after: avoid; }
+    .quarter-row td    { font-size: 8px !important; padding: 4px 10px !important; page-break-after: avoid; break-after: avoid; }
+    .template-table tr { page-break-inside: avoid; break-inside: avoid; }
+    .week-tag          { font-size: 8.5px !important; padding: 1px 5px !important; }
+    .milestone-badge, .exam-badge, .clin-badge, .review-badge { font-size: 8px !important; padding: 1px 5px !important; }
+    .fill-line  { height: 12px !important; margin: 3px 0 !important; }
+    .fill-hint  { font-size: 9px !important; }
+
+    /* ── REMINDER CARDS ── */
+    .reminder-grid {
+      gap: 8px !important;
+      margin-bottom: 10px !important;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .reminder-card   { padding: 10px 12px !important; border-radius: 6px !important; }
+    .reminder-label  { font-size: 8px !important; }
+    .reminder-text   { font-size: 9.5px !important; }
+
+    /* ── NOTE CARDS (36-week) ── */
+    .note-grid  { gap: 8px !important; margin-bottom: 10px !important; page-break-inside: avoid; break-inside: avoid; }
+    .note-card  { padding: 10px 12px !important; }
+    .note-label { font-size: 8px !important; }
+    .note-text  { font-size: 9.5px !important; }
+
+    /* ── FOOTER ── */
+    .footer { font-size: 9px !important; margin-top: 10px !important; }
+
+    /* ── COLOR PRESERVATION ── */
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  }
+  /* ── BLACK & WHITE PRINT MODE ── */
+  body.bw-mode .cover-band {
+    background: white !important;
+    border: 2px solid black !important;
+  }
+  body.bw-mode .cover-band::before,
+  body.bw-mode .cover-band::after { display: none !important; }
+  body.bw-mode .brand-name,
+  body.bw-mode .cover-eyebrow { color: black !important; }
+  body.bw-mode .cover-title { color: black !important; }
+  body.bw-mode .cover-title em { color: black !important; font-style: italic; }
+  body.bw-mode .cover-sub { color: #333 !important; }
+  body.bw-mode .brand-tag { color: #555 !important; }
+  body.bw-mode .cover-chip {
+    background: white !important;
+    border: 1px solid #333 !important;
+    color: black !important;
+  }
+
+  body.bw-mode .intro-box {
+    background: white !important;
+    border: 1px solid #333 !important;
+    border-left: 4px solid black !important;
+  }
+  body.bw-mode .how-card {
+    background: white !important;
+    border: 1px solid #333 !important;
+  }
+  body.bw-mode .how-num {
+    background: black !important;
+    color: white !important;
+  }
+  body.bw-mode .legend-pill {
+    background: white !important;
+    border: 1px solid #555 !important;
+  }
+  body.bw-mode .legend-dot {
+    background: black !important;
+  }
+
+  body.bw-mode .template-table th {
+    background: black !important;
+    color: white !important;
+  }
+  body.bw-mode .phase-row td {
+    background: #222 !important;
+    color: white !important;
+    border-top: 2px solid black !important;
+  }
+  body.bw-mode .quarter-row td {
+    background: #666 !important;
+    color: white !important;
+  }
+  body.bw-mode .template-table tr:nth-child(even) td {
+    background: #f5f5f5 !important;
+  }
+  body.bw-mode .week-tag {
+    background: black !important;
+    color: white !important;
+  }
+  body.bw-mode .milestone-badge,
+  body.bw-mode .exam-badge,
+  body.bw-mode .clin-badge,
+  body.bw-mode .review-badge {
+    background: white !important;
+    border: 1px solid black !important;
+    color: black !important;
+  }
+
+  body.bw-mode .reminder-card,
+  body.bw-mode .note-card {
+    background: white !important;
+    border: 1px solid #333 !important;
+    border-left: 4px solid black !important;
+  }
+  body.bw-mode .reminder-label,
+  body.bw-mode .note-label { color: black !important; }
+
+  body.bw-mode .diff-band {
+    background: white !important;
+    border: 1px solid #333 !important;
+    border-left: 4px solid black !important;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <button class="print-btn" onclick="printColor()">🖨 Print — Color</button>
+  <button class="print-btn" style="background:#475569" onclick="printBW()">⬛ Print — Black &amp; White</button>
+</div>
+
+<script>
+function printColor() {
+  document.body.classList.remove('bw-mode');
+  window.print();
+}
+function printBW() {
+  document.body.classList.add('bw-mode');
+  window.print();
+  // Remove bw-mode after printing so screen view stays colorful
+  setTimeout(() => document.body.classList.remove('bw-mode'), 1000);
+}
+</script>
+
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover-band">
+    <div class="brand-row">
+      <span class="brand-name">HealthSim Hub</span>
+      <span class="brand-div"></span>
+      <span class="brand-tag">Free Resource</span>
+    </div>
+    <div class="cover-eyebrow">CCMA Retention Toolkit · Section 4 Companion</div>
+    <div class="cover-title">The CCMA <em>Retention Rhythm</em><br>Template</div>
+    <div class="cover-sub">A week-by-week planning template for building retention into your NHA CCMA course — so exam prep isn't the first time students see content twice.</div>
+    <div class="cover-chips">
+      <span class="cover-chip">NHA CCMA Aligned</span>
+      <span class="cover-chip">18-Week Framework</span>
+      <span class="cover-chip">Any Classroom Structure</span>
+      <span class="cover-chip">Print or Fill Digitally</span>
+      <span class="cover-chip">Free Resource</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <strong>How to use this template:</strong> This is your retention planning layer — it goes on top of whatever pacing guide you already use. For each week, fill in your current module, your daily recall topic, your callback Friday topic (a module from 2–3 weeks prior), and any check-off or milestone that week. You don't have to plan every question in advance. Just knowing which module you're reaching back to each week is enough. Weeks 1–5 are pre-filled as an example — customize them to match your own sequence.
+  </div>
+
+  <!-- HOW TO USE -->
+  <div class="section-label">Three Things to Fill In Each Week</div>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">1</div>
+      <div class="how-title">Daily Recall Topic</div>
+      <div class="how-desc">The concept you'll ask about at the start of class — no notes, out loud. Should be from the current module OR a past one. Rotate both.</div>
+    </div>
+    <div class="how-card">
+      <div class="how-num">2</div>
+      <div class="how-title">Callback Friday Topic</div>
+      <div class="how-desc">A module from 2–3 weeks ago that gets a 10-minute revisit. This is how you fight the forgetting curve without reteaching full lessons.</div>
+    </div>
+    <div class="how-card">
+      <div class="how-num">3</div>
+      <div class="how-title">Check-Off / Milestone</div>
+      <div class="how-desc">Any skills check-off, cumulative review, or phase assessment that happens this week. Marks progress and catches gaps early.</div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="section-label">Week Key</div>
+  <div class="legend-row">
+    <div class="legend-pill"><span class="legend-dot" style="background:#1d4ed8"></span>Phase 1 — Foundation (Wks 1–5)</div>
+    <div class="legend-pill"><span class="legend-dot" style="background:var(--teal)"></span>Phase 2 — Clinical Skills (Wks 6–13)</div>
+    <div class="legend-pill"><span class="legend-dot" style="background:#6D28D9"></span>Phase 3 — Admin & Simulation (Wks 14–17)</div>
+    <div class="legend-pill"><span class="legend-dot" style="background:var(--gold)"></span>Exam Prep (Wk 18)</div>
+  </div>
+
+  <!-- TEMPLATE TABLE -->
+  <div class="section-label" style="page-break-after:avoid;break-after:avoid">Your Retention Rhythm — 18-Week Template</div>
+  <div class="template-wrap">
+    <table class="template-table">
+      <thead>
+        <tr>
+          <th>Wk</th>
+          <th>Current Module</th>
+          <th>Daily Recall Topic</th>
+          <th>Callback Friday Topic</th>
+          <th>Check-Off / Milestone</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- PHASE 1 -->
+        <tr class="phase-row">
+          <td colspan="5">Phase 1 — Foundation · Weeks 1–5 · Retention goal: build the daily recall habit before content gets hard</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W1</span></td>
+          <td>Roles &amp; Responsibilities</td>
+          <td>Scope of practice scenarios</td>
+          <td class="fill-hint">— first week</td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W2</span></td>
+          <td>Communication</td>
+          <td>Communication barrier types</td>
+          <td>Roles &amp; Responsibilities</td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W3</span></td>
+          <td>Ethics &amp; Law / HIPAA</td>
+          <td>HIPAA identifiers + violations</td>
+          <td>Communication</td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W4</span></td>
+          <td>A&amp;P + Terminology</td>
+          <td>Prefix / root / suffix decoding</td>
+          <td>Ethics &amp; HIPAA</td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W5</span></td>
+          <td>Infection Control</td>
+          <td>Chain of infection + breaks</td>
+          <td>A&amp;P / Terminology</td>
+          <td><span class="milestone-badge">✓ Phase 1 Check-Off</span></td>
+        </tr>
+
+        <!-- PHASE 2 -->
+        <tr class="phase-row">
+          <td colspan="5">Phase 2 — Clinical Skills · Weeks 6–13 · Retention goal: stack skills without losing the foundation</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W6</span></td>
+          <td><span class="fill-hint">your module</span></td>
+          <td><span class="fill-line"></span></td>
+          <td>Callback: W3–4 topic<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W7</span></td>
+          <td><span class="fill-hint">your module</span></td>
+          <td><span class="fill-line"></span></td>
+          <td>Callback: W4–5 topic<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W8</span></td>
+          <td><span class="fill-hint">your module</span></td>
+          <td><span class="fill-line"></span></td>
+          <td>Callback: W5–6 topic<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W9</span></td>
+          <td><span class="fill-hint">your module</span></td>
+          <td>Rotate: current + past</td>
+          <td>Callback: W6–7 topic<span class="fill-line"></span></td>
+          <td><span class="milestone-badge">✓ Phase 1+2 Cumulative Review</span></td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W10</span></td>
+          <td><span class="fill-hint">your module</span></td>
+          <td><span class="fill-line"></span></td>
+          <td>Callback: W7–8 topic<span class="fill-line"></span></td>
+          <td class="fill-hint">unit check-off</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W11</span></td>
+          <td><span class="fill-hint">your module</span></td>
+          <td><span class="fill-line"></span></td>
+          <td>Callback: W8–9 topic<span class="fill-line"></span></td>
+          <td class="fill-hint">unit check-off</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W12</span></td>
+          <td><span class="fill-hint">your module</span></td>
+          <td><span class="fill-line"></span></td>
+          <td>Callback: W9–10 topic<span class="fill-line"></span></td>
+          <td class="fill-hint">unit check-off</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W13</span></td>
+          <td><span class="fill-hint">your module</span></td>
+          <td><span class="fill-line"></span></td>
+          <td>Callback: W10–11 topic<span class="fill-line"></span></td>
+          <td class="fill-hint">unit check-off</td>
+        </tr>
+
+        <!-- PHASE 3 -->
+        <tr class="phase-row">
+          <td colspan="5">Phase 3 — Admin &amp; Simulation · Weeks 14–17 · Retention goal: integrate everything, lose nothing</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph3">W14</span></td>
+          <td><span class="fill-hint">your module</span></td>
+          <td>Mixed-domain recall<span class="fill-line"></span></td>
+          <td>Hard module callback<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph3">W15</span></td>
+          <td><span class="fill-hint">your module</span></td>
+          <td>Mixed-domain recall<span class="fill-line"></span></td>
+          <td>EKG / Phlebotomy / Billing<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph3">W16</span></td>
+          <td><span class="fill-hint">your module</span></td>
+          <td>Mixed-domain recall<span class="fill-line"></span></td>
+          <td>EKG / Phlebotomy / Billing<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph3">W17</span></td>
+          <td>Full Clinic Simulation</td>
+          <td>All domains — mixed recall</td>
+          <td>Weakest module from practice test</td>
+          <td><span class="milestone-badge">✓ Full Simulation</span></td>
+        </tr>
+
+        <!-- EXAM PREP -->
+        <tr class="phase-row">
+          <td colspan="5">Exam Prep · Week 18 · Retention goal: sharpen what's there — don't try to build what isn't</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag exam">W18</span></td>
+          <td>Exam Prep &amp; Certification</td>
+          <td>Practice test by domain</td>
+          <td>Weak-area targeted review</td>
+          <td><span class="exam-badge">🎓 NHA CCMA Exam</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- REMINDER CARDS -->
+  <div class="section-label">Quick Reminders — The Four Retention Rhythms</div>
+  <div class="reminder-grid">
+    <div class="reminder-card rc-daily">
+      <div class="reminder-label">⚡ Every Class · 3–5 min</div>
+      <div class="reminder-text"><strong>Daily Recall Question</strong> — No notes, out loud. One concept from the current module OR a past one. This is the single highest-impact habit in this whole system. Don't skip it.</div>
+    </div>
+    <div class="reminder-card rc-weekly">
+      <div class="reminder-label">📅 Every Friday · 10 min</div>
+      <div class="reminder-text"><strong>Callback Friday</strong> — Pick a topic from 2–3 weeks ago. One question, one scenario, one mnemonic review. Label it on your lesson plan so it never gets cut when time is tight.</div>
+    </div>
+    <div class="reminder-card rc-unit">
+      <div class="reminder-label">✅ End of Each Unit</div>
+      <div class="reminder-text"><strong>Unit Check-Off</strong> — Before moving to the next module, do a quick 5-item skills demonstration. Students who can't demonstrate Week 6 content in Week 8 will not be ready for the exam in Week 18.</div>
+    </div>
+    <div class="reminder-card rc-phase">
+      <div class="reminder-label">🔄 Week 9 + Week 17</div>
+      <div class="reminder-text"><strong>Cumulative Reviews</strong> — Two dedicated review sessions across the course. Not new content — just retrieval. Week 9 is your early warning system. Week 17 is your final simulation.</div>
+    </div>
+  </div>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <div class="cta-left">
+      <h3>This template is just one piece of the puzzle.</h3>
+      <p>The full CCMA Retention Toolkit is free — five sections covering why students disengage, the strategies that actually work, and a mnemonic and activity for every NHA module. Plus done-for-you resources at the HealthSim Hub store.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+      <a class="cta-btn" href="https://healthsimhub.com" target="_blank">Get the Free Toolkit →</a>
+      <a class="cta-btn-outline" href="https://www.teacherspayteachers.com/store/healthsim-hub" target="_blank">Visit HealthSim Hub on TPT</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    CCMA Retention Rhythm Template · HealthSim Hub · Kenya Reid-Winecoff, RN, BSN<br>
+    Free to use and share with fellow CCMA teachers · More resources at healthsimhub.com
+  </div>
+
+</div>
+</body>
+</html>

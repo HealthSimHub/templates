@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCMA Retention Rhythm Template — Year-Long (36 Weeks) — HealthSim Hub</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+  :root {
+    --navy:    #0F2240;
+    --navy2:   #162d52;
+    --teal:    #0D7377;
+    --teal2:   #0fb8a8;
+    --teallt:  #E0F4F4;
+    --gold:    #E8A020;
+    --goldlt:  #FEF3DC;
+    --green:   #065F46;
+    --greenlt: #ECFDF5;
+    --purple:  #6D28D9;
+    --purplt:  #F5F3FF;
+    --rose:    #C0392B;
+    --roselt:  #FDECEA;
+    --slate:   #475569;
+    --border:  #E2E8F0;
+    --bg:      #F8FAFB;
+    --white:   #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--navy);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+
+  .print-bar {
+    background: var(--navy);
+    padding: 10px 32px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  .print-btn {
+    background: var(--teal);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .print-btn:hover { background: var(--teal2); }
+
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 32px 60px;
+  }
+
+  /* COVER */
+  .cover-band {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-band::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(13,115,119,.18);
+  }
+  .cover-band::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: 60px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(232,160,32,.10);
+  }
+  .brand-row {
+    display: flex; align-items: center;
+    gap: 10px; margin-bottom: 16px; position: relative;
+  }
+  .brand-name { font-family: 'DM Serif Display', serif; font-size: 13px; color: var(--teal2); }
+  .brand-div { width: 1px; height: 14px; background: rgba(255,255,255,.2); }
+  .brand-tag { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.4); }
+  .cover-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal2); margin-bottom: 8px; position: relative; }
+  .cover-title { font-family: 'DM Serif Display', serif; font-size: 32px; color: white; line-height: 1.15; margin-bottom: 10px; position: relative; }
+  .cover-title em { color: var(--gold); font-style: italic; }
+  .cover-sub { font-size: 13.5px; color: rgba(255,255,255,.65); max-width: 560px; line-height: 1.65; position: relative; margin-bottom: 20px; }
+  .cover-chips { display: flex; gap: 8px; flex-wrap: wrap; position: relative; }
+  .cover-chip { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 20px; padding: 4px 12px; font-size: 11px; color: rgba(255,255,255,.75); font-weight: 500; }
+
+  /* DIFFERENCE CALLOUT */
+  .diff-band {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    color: var(--slate);
+    line-height: 1.75;
+  }
+  .diff-band strong { color: var(--navy); }
+
+  /* INTRO */
+  .intro-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--teal);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    font-size: 13.5px;
+    color: var(--slate);
+    line-height: 1.75;
+  }
+  .intro-box strong { color: var(--navy); }
+
+  /* HOW TO USE */
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 600px) { .how-grid { grid-template-columns: 1fr; } }
+  .how-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+  .how-num { width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: white; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+  .how-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .how-desc { font-size: 12.5px; color: var(--slate); line-height: 1.65; }
+
+  /* SECTION LABEL */
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--slate); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+
+  /* LEGEND */
+  .legend-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .legend-pill { display: flex; align-items: center; gap: 6px; background: white; border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; font-size: 12px; color: var(--slate); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* TEMPLATE TABLE */
+  .template-wrap {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 8px rgba(15,34,64,.06);
+  }
+  .template-table { width: 100%; border-collapse: collapse; }
+  .template-table th { background: var(--navy); color: white; font-size: 11px; font-weight: 700; letter-spacing: .5px; padding: 10px 14px; text-align: left; }
+  .template-table th:first-child { width: 60px; text-align: center; }
+  .template-table th:nth-child(2) { width: 140px; }
+  .template-table td { padding: 11px 14px; font-size: 12.5px; color: var(--slate); border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.55; }
+  .template-table td:first-child { text-align: center; }
+  .template-table tr:last-child td { border-bottom: none; }
+  .template-table tr:nth-child(even) td { background: var(--bg); }
+
+  .phase-row td { background: var(--navy) !important; color: rgba(255,255,255,.9) !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: .5px !important; text-transform: uppercase !important; padding: 7px 14px !important; }
+  .quarter-row td { background: #1e3a5f !important; color: rgba(255,255,255,.7) !important; font-size: 10px !important; font-weight: 600 !important; letter-spacing: .5px !important; text-transform: uppercase !important; padding: 5px 14px !important; font-style: italic; }
+
+  .week-tag { display: inline-block; color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; font-family: 'DM Mono', monospace; }
+  .ph1 { background: #1d4ed8; }
+  .ph2 { background: var(--teal); }
+  .ph3 { background: #6D28D9; }
+  .clin { background: #be123c; }
+  .exam { background: var(--gold); color: var(--navy) !important; }
+
+  .fill-line { display: block; border-bottom: 1px solid #CBD5E1; margin: 6px 0; min-width: 80px; height: 16px; }
+  .fill-hint { font-size: 10.5px; color: #CBD5E1; font-style: italic; font-family: 'DM Mono', monospace; }
+
+  .milestone-badge { display: inline-block; background: var(--greenlt); border: 1px solid #6ee7b7; color: var(--green); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
+  .exam-badge { display: inline-block; background: var(--goldlt); border: 1px solid #fcd34d; color: #92400e; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
+  .clin-badge { display: inline-block; background: var(--roselt); border: 1px solid #fca5a5; color: var(--rose); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
+  .review-badge { display: inline-block; background: var(--purplt); border: 1px solid #c4b5fd; color: var(--purple); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
+
+  /* YEAR-LONG SPECIFIC NOTES */
+  .note-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+  @media (max-width: 600px) { .note-grid { grid-template-columns: 1fr; } }
+  .note-card { border-radius: 10px; padding: 14px 18px; }
+  .nc-teal { background: var(--teallt); border-left: 3px solid var(--teal); }
+  .nc-gold { background: var(--goldlt); border-left: 3px solid var(--gold); }
+  .nc-purple { background: var(--purplt); border-left: 3px solid var(--purple); }
+  .nc-rose { background: var(--roselt); border-left: 3px solid var(--rose); }
+  .note-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+  .nc-teal .note-label { color: var(--teal); }
+  .nc-gold .note-label { color: #B45309; }
+  .nc-purple .note-label { color: var(--purple); }
+  .nc-rose .note-label { color: var(--rose); }
+  .note-text { font-size: 12.5px; color: var(--navy); line-height: 1.65; }
+  .note-text strong { color: var(--navy); }
+
+  /* CTA */
+  .cta-band { background: linear-gradient(135deg, var(--navy), #1a3a6b); border-radius: 14px; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
+  .cta-left h3 { font-family: 'DM Serif Display', serif; font-size: 18px; color: white; margin-bottom: 6px; }
+  .cta-left p { font-size: 12.5px; color: rgba(255,255,255,.65); line-height: 1.6; max-width: 420px; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--gold); color: var(--navy); font-size: 12.5px; font-weight: 700; padding: 10px 20px; border-radius: 20px; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+  .cta-btn:hover { background: #f0be5a; }
+  .cta-btn-outline { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.85); font-size: 12px; font-weight: 600; padding: 8px 16px; border-radius: 20px; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+  .cta-btn-outline:hover { background: rgba(255,255,255,.18); }
+
+  .footer { text-align: center; font-size: 11px; color: #94a3b8; margin-top: 20px; line-height: 1.7; }
+
+  @media print {
+    /* ── HIDE SCREEN-ONLY ELEMENTS ── */
+    .print-bar { display: none !important; }
+    .cta-band  { display: none !important; }
+
+    /* ── PAGE SETUP ── */
+    @page { margin: 14mm 12mm; size: letter; }
+    html, body { background: white !important; font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+
+    /* ── COVER ── */
+    .cover-band {
+      border-radius: 10px !important;
+      padding: 20px 24px !important;
+      margin-bottom: 12px !important;
+      page-break-after: avoid;
+      break-after: avoid;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .cover-band::before, .cover-band::after { display: none; }
+    .cover-title { font-size: 22px !important; }
+    .cover-sub   { font-size: 11px !important; margin-bottom: 10px !important; }
+
+    /* ── CHIPS ── */
+    .cover-chips { gap: 5px !important; margin-top: 10px !important; }
+    .cover-chip  { font-size: 9px !important; padding: 2px 8px !important; border-radius: 10px !important; }
+
+    /* ── CALLOUT BOXES ── */
+    .diff-band  { padding: 10px 14px !important; margin-bottom: 10px !important; font-size: 10px !important; page-break-inside: avoid; break-inside: avoid; }
+    .intro-box  { padding: 10px 14px !important; margin-bottom: 10px !important; font-size: 10px !important; page-break-inside: avoid; break-inside: avoid; }
+
+    /* ── HOW GRID ── */
+    .section-label { font-size: 8px !important; margin-bottom: 8px !important; }
+    .how-grid  { gap: 8px !important; margin-bottom: 10px !important; page-break-inside: avoid; break-inside: avoid; }
+    .how-card  { padding: 10px 12px !important; }
+    .how-num   { width: 22px !important; height: 22px !important; font-size: 10px !important; margin-bottom: 6px !important; }
+    .how-title { font-size: 10px !important; }
+    .how-desc  { font-size: 9.5px !important; }
+
+    /* ── NOTE CARDS ── */
+    .note-grid  { gap: 8px !important; margin-bottom: 10px !important; page-break-inside: avoid; break-inside: avoid; }
+    .note-card  { padding: 10px 12px !important; }
+    .note-label { font-size: 8px !important; }
+    .note-text  { font-size: 9.5px !important; }
+
+    /* ── LEGEND ── */
+    .legend-row  { margin-bottom: 10px !important; gap: 6px !important; }
+    .legend-pill { font-size: 9px !important; padding: 3px 8px !important; }
+
+    /* ── TABLE ── */
+    .template-wrap {
+      border-radius: 8px !important;
+      margin-bottom: 12px !important;
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+    .template-table th  { font-size: 9px !important; padding: 6px 8px !important; }
+    .template-table td  { font-size: 9.5px !important; padding: 6px 8px !important; line-height: 1.35 !important; }
+    .phase-row td       { font-size: 8px !important; padding: 5px 8px !important; page-break-after: avoid; break-after: avoid; }
+    .quarter-row td     { font-size: 7.5px !important; padding: 4px 8px !important; page-break-after: avoid; break-after: avoid; }
+    .template-table tr  { page-break-inside: avoid; break-inside: avoid; }
+    .week-tag           { font-size: 8px !important; padding: 1px 5px !important; }
+    .milestone-badge, .exam-badge, .clin-badge, .review-badge { font-size: 7.5px !important; padding: 1px 4px !important; }
+    .fill-line  { height: 11px !important; margin: 2px 0 !important; }
+    .fill-hint  { font-size: 8.5px !important; }
+
+    /* ── REMINDER CARDS ── */
+    .reminder-grid  { gap: 8px !important; margin-bottom: 10px !important; page-break-inside: avoid; break-inside: avoid; }
+    .reminder-card  { padding: 10px 12px !important; }
+    .reminder-label { font-size: 8px !important; }
+    .reminder-text  { font-size: 9.5px !important; }
+
+    /* ── FOOTER ── */
+    .footer { font-size: 9px !important; margin-top: 10px !important; }
+
+    /* ── COLOR PRESERVATION ── */
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  }
+
+  /* ── BLACK & WHITE PRINT MODE ── */
+  body.bw-mode .cover-band {
+    background: white !important;
+    border: 2px solid black !important;
+  }
+  body.bw-mode .cover-band::before,
+  body.bw-mode .cover-band::after { display: none !important; }
+  body.bw-mode .brand-name,
+  body.bw-mode .cover-eyebrow { color: black !important; }
+  body.bw-mode .cover-title { color: black !important; }
+  body.bw-mode .cover-title em { color: black !important; font-style: italic; }
+  body.bw-mode .cover-sub { color: #333 !important; }
+  body.bw-mode .brand-tag { color: #555 !important; }
+  body.bw-mode .cover-chip {
+    background: white !important;
+    border: 1px solid #333 !important;
+    color: black !important;
+  }
+  body.bw-mode .diff-band,
+  body.bw-mode .intro-box {
+    background: white !important;
+    border: 1px solid #333 !important;
+    border-left: 4px solid black !important;
+  }
+  body.bw-mode .how-card,
+  body.bw-mode .note-card {
+    background: white !important;
+    border: 1px solid #333 !important;
+  }
+  body.bw-mode .how-num {
+    background: black !important;
+    color: white !important;
+  }
+  body.bw-mode .legend-pill {
+    background: white !important;
+    border: 1px solid #555 !important;
+  }
+  body.bw-mode .legend-dot { background: black !important; }
+  body.bw-mode .template-table th {
+    background: black !important;
+    color: white !important;
+  }
+  body.bw-mode .phase-row td {
+    background: #222 !important;
+    color: white !important;
+    border-top: 2px solid black !important;
+  }
+  body.bw-mode .quarter-row td {
+    background: #666 !important;
+    color: white !important;
+  }
+  body.bw-mode .template-table tr:nth-child(even) td {
+    background: #f5f5f5 !important;
+  }
+  body.bw-mode .week-tag {
+    background: black !important;
+    color: white !important;
+  }
+  body.bw-mode .milestone-badge,
+  body.bw-mode .exam-badge,
+  body.bw-mode .clin-badge,
+  body.bw-mode .review-badge {
+    background: white !important;
+    border: 1px solid black !important;
+    color: black !important;
+  }
+  body.bw-mode .reminder-card {
+    background: white !important;
+    border: 1px solid #333 !important;
+    border-left: 4px solid black !important;
+  }
+  body.bw-mode .reminder-label,
+  body.bw-mode .note-label { color: black !important; }
+
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <button class="print-btn" onclick="printColor()">🖨 Print — Color</button>
+  <button class="print-btn" style="background:#475569" onclick="printBW()">⬛ Print — Black &amp; White</button>
+</div>
+
+<script>
+function printColor() {
+  document.body.classList.remove('bw-mode');
+  window.print();
+}
+function printBW() {
+  document.body.classList.add('bw-mode');
+  window.print();
+  setTimeout(() => document.body.classList.remove('bw-mode'), 1000);
+}
+</script>
+
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover-band">
+    <div class="brand-row">
+      <span class="brand-name">HealthSim Hub</span>
+      <span class="brand-div"></span>
+      <span class="brand-tag">Free Resource</span>
+    </div>
+    <div class="cover-eyebrow">CCMA Retention Toolkit · Year-Long Edition</div>
+    <div class="cover-title">The CCMA <em>Retention Rhythm</em><br>Template — 36 Weeks</div>
+    <div class="cover-sub">A week-by-week retention planning template for year-long NHA CCMA courses — built around a 36-week 4x9 structure with four cumulative review points and a clinical rotation window.</div>
+    <div class="cover-chips">
+      <span class="cover-chip">NHA CCMA Aligned</span>
+      <span class="cover-chip">36-Week / Full Year</span>
+      <span class="cover-chip">Clinical Rotation Aware</span>
+      <span class="cover-chip">4 x 9-Week Quarters</span>
+      <span class="cover-chip">Print or Fill Digitally</span>
+      <span class="cover-chip">Free Resource</span>
+    </div>
+  </div>
+
+  <!-- WHAT'S DIFFERENT -->
+  <div class="diff-band">
+    <strong>Teaching a year-long course? This is not the 18-week template stretched out.</strong> Year-long CCMA courses have a different retention challenge — content taught in September needs to still be accessible in April. This template builds in four quarterly review points, a deeper callback rotation, and a clinical rotation window. The module sequence is the same. The rhythm is different.
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <strong>How to use this template:</strong> Fill in your current module for each week and your daily recall topic. The Callback Friday column already has guidance for how far back to reach — in a year-long course, you need to reach further than 2–3 weeks once you hit Q2 and beyond. The quarterly review weeks (W9, W18, W27, W35) are pre-marked — treat those as non-negotiable. Clinical rotation weeks are noted as a window — adjust based on your district's schedule.
+  </div>
+
+  <!-- HOW TO USE -->
+  <div class="section-label">The Four Columns</div>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">1</div>
+      <div class="how-title">Daily Recall Topic</div>
+      <div class="how-desc">One concept, out loud, no notes, first 3–5 minutes of class. In a year-long course rotate between current AND older content daily — by Q3 students need to be recalling Q1 content regularly.</div>
+    </div>
+    <div class="how-card">
+      <div class="how-num">2</div>
+      <div class="how-title">Callback Friday Topic</div>
+      <div class="how-desc">Reach back 3–6 weeks in Q1–Q2, and 6–10 weeks in Q3–Q4. The forgetting curve is steeper over a full year. If you only reach back 2–3 weeks in April, September content is gone.</div>
+    </div>
+    <div class="how-card">
+      <div class="how-num">3</div>
+      <div class="how-title">Check-Off / Milestone</div>
+      <div class="how-desc">Four quarterly cumulative reviews are pre-placed. Each one covers everything taught so far — not just the current quarter. These are your insurance policy against the forgetting curve.</div>
+    </div>
+  </div>
+
+  <!-- YEAR-LONG SPECIFIC NOTES -->
+  <div class="section-label">Year-Long Teaching — What's Different</div>
+  <div class="note-grid">
+    <div class="note-card nc-teal">
+      <div class="note-label">📅 Quarterly Reviews — Non-Negotiable</div>
+      <div class="note-text">In an 18-week course you can get away with one mid-point review. In a 36-week course, <strong>one review is not enough.</strong> Content from Q1 will be cold by Q3 without deliberate callbacks. Protect the four quarterly review weeks — don't use them for new content.</div>
+    </div>
+    <div class="note-card nc-gold">
+      <div class="note-label">↩ Callback Distance Increases Over Time</div>
+      <div class="note-text">In Q1, reach back 2–3 weeks. By Q3 and Q4, <strong>reach back 6–10 weeks.</strong> If you're in Week 28 and your Callback Friday topic is from Week 25, that's not a callback — that's just review. True spaced repetition requires reaching much further back as the course progresses.</div>
+    </div>
+    <div class="note-card nc-purple">
+      <div class="note-label">🏥 Clinical Rotation Window</div>
+      <div class="note-text">Clinical weeks are marked as a window around Weeks 28–33. <strong>Adjust to match your district's schedule.</strong> During clinical rotations, students are seeing content live — use your classroom time for recall and debrief rather than new instruction. The rotation IS the retention tool.</div>
+    </div>
+    <div class="note-card nc-rose">
+      <div class="note-label">⚠ The Q3 Slide</div>
+      <div class="note-text">Most year-long CCMA courses see a retention dip in Q3 — roughly Weeks 19–27. Students are past the novelty of clinical skills and haven't hit exam urgency yet. <strong>This is where daily recall matters most.</strong> Don't ease up on it in Q3 thinking you have time.</div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="section-label">Week Key</div>
+  <div class="legend-row">
+    <div class="legend-pill"><span class="legend-dot" style="background:#1d4ed8"></span>Phase 1 — Foundation (Wks 1–8)</div>
+    <div class="legend-pill"><span class="legend-dot" style="background:var(--teal)"></span>Phase 2 — Clinical Skills (Wks 9–24)</div>
+    <div class="legend-pill"><span class="legend-dot" style="background:#6D28D9"></span>Phase 3 — Admin &amp; Simulation (Wks 25–34)</div>
+    <div class="legend-pill"><span class="legend-dot" style="background:#be123c"></span>Clinical Rotation Window (Wks 28–33)</div>
+    <div class="legend-pill"><span class="legend-dot" style="background:var(--gold)"></span>Exam Prep (Wks 35–36)</div>
+  </div>
+
+  <!-- TEMPLATE TABLE -->
+  <div class="section-label" style="page-break-after:avoid;break-after:avoid">Your Retention Rhythm — 36-Week Template</div>
+  <div class="template-wrap">
+    <table class="template-table">
+      <thead>
+        <tr>
+          <th>Wk</th>
+          <th>Current Module</th>
+          <th>Daily Recall Topic</th>
+          <th>Callback Friday Topic</th>
+          <th>Check-Off / Milestone</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- PHASE 1 -->
+        <tr class="phase-row">
+          <td colspan="5">Phase 1 — Foundation · Weeks 1–8 · Build the daily recall habit. Every concept needs a clinical anchor.</td>
+        </tr>
+        <tr class="quarter-row">
+          <td colspan="5">Quarter 1 · Weeks 1–9 · Retention goal: establish the habit before content gets complex</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W1</span></td>
+          <td>Roles &amp; Responsibilities</td>
+          <td>Scope of practice scenarios</td>
+          <td class="fill-hint">— first week</td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W2</span></td>
+          <td>Communication</td>
+          <td>Communication barrier types</td>
+          <td>Roles &amp; Responsibilities</td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W3</span></td>
+          <td>Ethics &amp; Law / HIPAA</td>
+          <td>HIPAA identifiers + violations</td>
+          <td>Communication</td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W4</span></td>
+          <td>A&amp;P + Terminology</td>
+          <td>Prefix / root / suffix decoding</td>
+          <td>Ethics &amp; HIPAA</td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W5</span></td>
+          <td>Infection Control</td>
+          <td>Chain of infection + breaks</td>
+          <td>A&amp;P / Terminology</td>
+          <td><span class="milestone-badge">✓ Phase 1 Check-Off</span></td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W6</span></td>
+          <td>Psychology &amp; Mental Health</td>
+          <td><span class="fill-line"></span></td>
+          <td>Infection Control / A&amp;P</td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W7</span></td>
+          <td>Pharmacology Basics</td>
+          <td>5 Rights of medication admin</td>
+          <td>HIPAA / Ethics</td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W8</span></td>
+          <td>Pharmacology cont.</td>
+          <td>Drug classifications by suffix</td>
+          <td>Roles &amp; Communication</td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph1">W9</span></td>
+          <td colspan="3" style="font-style:italic;color:var(--purple);font-weight:600">★ Q1 Cumulative Review — All Phase 1 content. No new material. Retrieval only.</td>
+          <td><span class="review-badge">★ Q1 Review</span></td>
+        </tr>
+
+        <!-- PHASE 2 -->
+        <tr class="phase-row">
+          <td colspan="5">Phase 2 — Clinical Skills · Weeks 10–24 · Stack skills without losing the foundation. Callbacks must reach Q1.</td>
+        </tr>
+        <tr class="quarter-row">
+          <td colspan="5">Quarter 2 · Weeks 10–18 · Retention goal: clinical skills + keep Q1 alive</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W10</span></td>
+          <td>Vital Signs &amp; Assessment</td>
+          <td>Normal vital sign ranges</td>
+          <td>Reach back to W5–7<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W11</span></td>
+          <td>Patient Intake &amp; History</td>
+          <td><span class="fill-line"></span></td>
+          <td>Reach back to W6–8<span class="fill-line"></span></td>
+          <td class="fill-hint">unit check-off</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W12</span></td>
+          <td>General Patient Care Pt. 1</td>
+          <td>5 Rights + 3 Checks</td>
+          <td>Reach back to W7–9<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W13</span></td>
+          <td>General Patient Care Pt. 2</td>
+          <td><span class="fill-line"></span></td>
+          <td>Reach back to W8–10<span class="fill-line"></span></td>
+          <td class="fill-hint">unit check-off</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W14</span></td>
+          <td>Sterile Technique</td>
+          <td>Sterile field principles</td>
+          <td>Reach back to W9–11<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W15</span></td>
+          <td>Phlebotomy</td>
+          <td>Order of draw — tube colors</td>
+          <td>Reach back to W10–12<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W16</span></td>
+          <td>Phlebotomy cont.</td>
+          <td>Venipuncture sequence steps</td>
+          <td>Reach back to W11–13<span class="fill-line"></span></td>
+          <td><span class="milestone-badge">✓ Phlebotomy Check-Off</span></td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W17</span></td>
+          <td>Lab / POC Testing</td>
+          <td>Critical value identification</td>
+          <td>Reach back to W12–14<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W18</span></td>
+          <td colspan="3" style="font-style:italic;color:var(--purple);font-weight:600">★ Q2 Cumulative Review — Phase 1 + Phase 2 so far. Emphasize Q1 content — it's been 9 weeks.</td>
+          <td><span class="review-badge">★ Q2 Review</span></td>
+        </tr>
+
+        <tr class="quarter-row">
+          <td colspan="5">Quarter 3 · Weeks 19–27 · The Q3 slide is real — don't ease up on daily recall. Callbacks now reach Q1 content.</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W19</span></td>
+          <td>EKG &amp; Cardiovascular</td>
+          <td>Lead placement — limb leads</td>
+          <td>Reach back to W9–13<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W20</span></td>
+          <td>EKG cont.</td>
+          <td>Precordial lead placement</td>
+          <td>Reach back to W10–14<span class="fill-line"></span></td>
+          <td><span class="milestone-badge">✓ EKG Check-Off</span></td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W21</span></td>
+          <td>Medication Administration</td>
+          <td>Drug suffix classifications</td>
+          <td>Reach back to W11–15<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W22</span></td>
+          <td>Medication Admin cont.</td>
+          <td>Dosage calculation practice</td>
+          <td>Reach back to W12–16<span class="fill-line"></span></td>
+          <td class="fill-hint">unit check-off</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W23</span></td>
+          <td><span class="fill-hint">your module</span></td>
+          <td><span class="fill-line"></span></td>
+          <td>Reach back to W13–17<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph2">W24</span></td>
+          <td><span class="fill-hint">your module</span></td>
+          <td><span class="fill-line"></span></td>
+          <td>Reach back to W14–18<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+
+        <!-- PHASE 3 -->
+        <tr class="phase-row">
+          <td colspan="5">Phase 3 — Admin &amp; Simulation · Weeks 25–34 · Integrate everything. Admin content is exam-heavy — don't skip it.</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph3">W25</span></td>
+          <td>Administrative Assisting</td>
+          <td>Front desk workflow — SCHED-ID-DOC</td>
+          <td>Reach back to W15–19<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph3">W26</span></td>
+          <td>Billing, Coding &amp; EMR</td>
+          <td>WHY · WHAT · STUFF code types</td>
+          <td>Reach back to W16–20<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph3">W27</span></td>
+          <td colspan="3" style="font-style:italic;color:var(--purple);font-weight:600">★ Q3 Cumulative Review — All content. Pull from Q1 heavily. This is your last major review before clinicals.</td>
+          <td><span class="review-badge">★ Q3 Review</span></td>
+        </tr>
+
+        <tr class="quarter-row">
+          <td colspan="5">Quarter 4 · Weeks 28–36 · Clinical rotation window + final push. Students are seeing content live — debrief everything.</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag clin">W28</span></td>
+          <td>Clinical Rotation</td>
+          <td>Debrief: what did you see this week?</td>
+          <td>Connect rotation to Q1–Q2 content</td>
+          <td><span class="clin-badge">🏥 Rotation Begins</span></td>
+        </tr>
+        <tr>
+          <td><span class="week-tag clin">W29</span></td>
+          <td>Clinical Rotation</td>
+          <td>Vital signs recall — from rotation</td>
+          <td>Phlebotomy / EKG callbacks</td>
+          <td class="fill-hint">rotation log</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag clin">W30</span></td>
+          <td>Clinical Rotation</td>
+          <td>Medication admin — rotation debrief</td>
+          <td>Infection control / sterile technique</td>
+          <td class="fill-hint">rotation log</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag clin">W31</span></td>
+          <td>Clinical Rotation</td>
+          <td><span class="fill-line"></span></td>
+          <td>Admin / billing from rotation context</td>
+          <td class="fill-hint">rotation log</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag clin">W32</span></td>
+          <td>Clinical Rotation</td>
+          <td><span class="fill-line"></span></td>
+          <td><span class="fill-line"></span></td>
+          <td class="fill-hint">rotation log</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag clin">W33</span></td>
+          <td>Clinical Rotation</td>
+          <td><span class="fill-line"></span></td>
+          <td><span class="fill-line"></span></td>
+          <td><span class="clin-badge">🏥 Rotation Ends</span></td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph3">W34</span></td>
+          <td>Care Coordination</td>
+          <td>Mixed domain — all modules</td>
+          <td>Reach back to Q1 content<span class="fill-line"></span></td>
+          <td class="fill-hint">—</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag ph3">W35</span></td>
+          <td colspan="3" style="font-style:italic;color:var(--purple);font-weight:600">★ Q4 / Pre-Exam Review — Practice test by domain. Weak areas only. No new content.</td>
+          <td><span class="review-badge">★ Q4 Review</span></td>
+        </tr>
+
+        <!-- EXAM PREP -->
+        <tr class="phase-row">
+          <td colspan="5">Exam Prep · Week 36 · Sharpen what's there. Confidence session, not a cram session.</td>
+        </tr>
+        <tr>
+          <td><span class="week-tag exam">W36</span></td>
+          <td>Exam Prep &amp; Certification</td>
+          <td>Mnemonics review — hardest modules</td>
+          <td>Weak domain targeted retrieval</td>
+          <td><span class="exam-badge">🎓 NHA CCMA Exam</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- YEAR-LONG QUICK REMINDERS -->
+  <div class="section-label">Year-Long Retention — The Four Rules</div>
+  <div class="note-grid">
+    <div class="note-card nc-teal">
+      <div class="note-label">⚡ Daily · 3–5 min · Never Skip</div>
+      <div class="note-text"><strong>Daily recall is more important in a year-long course than a semester course</strong> — because there's more time for content to go cold. One question, out loud, no notes. Rotate between current and older content starting in Q2.</div>
+    </div>
+    <div class="note-card nc-gold">
+      <div class="note-label">📅 Quarterly · Non-Negotiable</div>
+      <div class="note-text"><strong>Four cumulative reviews, not one.</strong> Weeks 9, 18, 27, and 35. Each one covers everything taught so far. In a year-long course, skipping a quarterly review means Q1 content is effectively gone by exam time.</div>
+    </div>
+    <div class="note-card nc-purple">
+      <div class="note-label">↩ Callbacks — Reach Further in Q3/Q4</div>
+      <div class="note-text"><strong>Callback distance must increase as the year goes on.</strong> Q1: reach back 2–3 weeks. Q2: reach back 4–6 weeks. Q3/Q4: reach back 8–10 weeks. If you're only reaching back 2 weeks in April, September content has been forgotten for months.</div>
+    </div>
+    <div class="note-card nc-rose">
+      <div class="note-label">🏥 Clinical Rotation — Use It</div>
+      <div class="note-text"><strong>Clinical weeks are not a break from retention.</strong> Students are seeing content live — debrief everything. Ask "what did you see this week and where does it connect to what we learned?" The rotation is your best retention tool of the entire year.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div class="cta-left">
+      <h3>Want the full strategy behind this template?</h3>
+      <p>The free CCMA Retention Toolkit covers all five retention strategies in depth — with a mnemonic and activity for every NHA module. Plus done-for-you resources at the HealthSim Hub store.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+      <a class="cta-btn" href="https://healthsimhub.com" target="_blank">Get the Free Toolkit →</a>
+      <a class="cta-btn-outline" href="https://www.teacherspayteachers.com/store/healthsim-hub" target="_blank">Visit HealthSim Hub on TPT</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    CCMA Retention Rhythm Template — 36-Week Edition · HealthSim Hub · Kenya Reid-Winecoff, RN, BSN<br>
+    Free to use and share with fellow CCMA teachers · More resources at healthsimhub.com
+  </div>
+
+</div>
+</body>
+</html>
